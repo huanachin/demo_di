@@ -22,6 +22,15 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Material(
+      child: SafeArea(
+        child: FutureBuilder<String>(
+          future: getProductName(),
+          builder: (context, snapshot) {
+            return Text(snapshot.data ?? "");
+          },
+        ),
+      ),
+    );
   }
 }
