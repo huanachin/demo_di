@@ -2,7 +2,9 @@ import 'package:demo_di/data/data_source/local/abstract/product_local_datasource
 import 'package:demo_di/data/data_source/preferences/abstract/local_preferences.dart';
 import 'package:demo_di/data/data_source/remote/abstract/product_cloud_datasource.dart';
 import 'package:demo_di/domain/repositories/product_repository.dart';
+import 'package:injectable/injectable.dart';
 
+@Injectable(as: ProductRepository)
 class ProductRepositoryImpl implements ProductRepository{
 
   final ProductLocalDataSource _productLocalDataSource;

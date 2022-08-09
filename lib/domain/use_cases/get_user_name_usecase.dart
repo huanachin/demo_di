@@ -1,5 +1,7 @@
 import 'package:demo_di/domain/repositories/user_repository.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class GetUserNameUseCase {
   final UserRepository _userRepository;
 

@@ -1,6 +1,8 @@
 import 'package:demo_di/data/data_source/preferences/abstract/local_preferences.dart';
+import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+@LazySingleton(as: LocalPreferences)
 class LocalPreferencesImpl implements LocalPreferences {
   final SharedPreferences _sharedPreferences;
 

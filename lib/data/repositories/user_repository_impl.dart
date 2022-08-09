@@ -1,7 +1,9 @@
 import 'package:demo_di/data/data_source/local/abstract/user_local_datasource.dart';
 import 'package:demo_di/data/data_source/remote/abstract/user_cloud_datasource.dart';
 import 'package:demo_di/domain/repositories/user_repository.dart';
+import 'package:injectable/injectable.dart';
 
+@Injectable(as: UserRepository)
 class UserRepositoryImpl implements UserRepository {
   final UserLocalDataSource _userLocalDataSource;
   final UserCloudDataSource _userCloudDataSource;
