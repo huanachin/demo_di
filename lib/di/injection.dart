@@ -1,8 +1,12 @@
+import 'package:demo_di/data/data_source/local/abstract/product_local_datasource.dart';
 import 'package:demo_di/data/data_source/local/abstract/user_local_datasource.dart';
+import 'package:demo_di/data/data_source/local/concrete/product_local_datasource_impl.dart';
 import 'package:demo_di/data/data_source/local/concrete/user_local_datasource_impl.dart';
 import 'package:demo_di/data/data_source/preferences/abstract/local_preferences.dart';
 import 'package:demo_di/data/data_source/preferences/concrete/preferences_impl.dart';
+import 'package:demo_di/data/data_source/remote/abstract/product_cloud_datasource.dart';
 import 'package:demo_di/data/data_source/remote/abstract/user_cloud_datasource.dart';
+import 'package:demo_di/data/data_source/remote/concrete/product_cloud_datasource_impl.dart';
 import 'package:demo_di/data/data_source/remote/concrete/user_cloud_datasource_impl.dart';
 import 'package:demo_di/data/database/database.dart';
 import 'package:demo_di/data/network/http_network.dart';
@@ -25,6 +29,8 @@ Future<void> setup() async {
   getIt.registerSingleton<LocalPreferences>(LocalPreferencesImpl(getIt()));
   getIt.registerLazySingleton<UserLocalDataSource>(() => UserLocalDataDataSourceImpl(getIt()));
   getIt.registerLazySingleton<UserCloudDataSource>(() => UserCloudDataDataSourceImpl(getIt()));
+  getIt.registerLazySingleton<ProductLocalDataSource>(() => ProductLocalDataSourceImpl(getIt()));
+  getIt.registerLazySingleton<ProductCloudDataSource>(() => ProductCloudDataSourceImpl(getIt()));
   getIt.registerFactory<UserRepository>(() => UserRepositoryImpl(getIt(), getIt()));
   getIt.registerFactory<ProductRepository>(() => ProductRepositoryImpl(getIt(), getIt(), getIt()));
   getIt.registerFactory(() => GetUserNameUseCase(getIt()));

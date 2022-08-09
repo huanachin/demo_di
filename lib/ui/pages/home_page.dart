@@ -15,20 +15,24 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
-  Future<String> getProductName() async {
-    final getProductNameUseCase = getIt<GetProductNameUseCase>();
-    return getProductNameUseCase.getProductName();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Material(
       child: SafeArea(
-        child: FutureBuilder<String>(
-          future: getProductName(),
-          builder: (context, snapshot) {
-            return Text(snapshot.data ?? "");
-          },
+        child: Center(
+          child: FutureBuilder<String>(
+            future: getIt<GetProductNameUseCase>().getProductName(),
+            builder: (context, snapshot) {
+              final productName = snapshot.data;
+              if (productName != null) {
+                return Text(
+                  productName,
+                  style: const TextStyle(fontSize: 32, color: Colors.green),
+                );
+              }
+              return const CircularProgressIndicator();
+            },
+          ),
         ),
       ),
     );
